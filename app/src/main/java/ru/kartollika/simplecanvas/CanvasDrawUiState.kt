@@ -7,7 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
-import ru.kartollika.simplecanvas.CanvasMode.Draw
 import ru.kartollika.simplecanvas.compose.Path
 import androidx.compose.ui.graphics.Path as ComposePath
 
@@ -19,15 +18,9 @@ fun rememberCanvasDrawState(
   }
 }
 
-enum class CanvasMode {
-  Draw,
-  Transform,
-}
-
 @Stable
 class CanvasDrawUiState {
   var currentPath by mutableStateOf<Path?>(null)
-  var mode by mutableStateOf<CanvasMode>(Draw)
 
   private var lastOffset: Offset = Offset.Unspecified
 
