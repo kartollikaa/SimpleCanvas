@@ -42,12 +42,11 @@ class CanvasDrawUiState {
         lastOffset.y + offset.y
       )
 
-      val currentPath = currentPath ?: return
       lastOffset = newOffset
+
+      val currentPath = currentPath ?: return
+      currentPath.path.lineTo(newOffset.x, newOffset.y)
       this.currentPath = currentPath.copy(
-        path = currentPath.path.apply {
-          lineTo(newOffset.x, newOffset.y)
-        },
         drawIndex = currentPath.drawIndex + 1
       )
     }
